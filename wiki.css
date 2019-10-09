@@ -1,0 +1,60 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+header{
+	height: 20%;
+	background-size: cover;
+	background-color: #F8A267;
+
+}
+
+.main-nav{
+	text-align: center;
+	list-style: none;
+	margin-top: 0px;
+}
+
+.main-nav li {
+	display: inline-block;
+
+}
+
+.main-nav li a {
+	border: 1px solid white;
+	color: white;
+	text-decoration: none;
+	padding: 5px 20px;
+	font-family: "Roboto", sans-serif;
+	font-size: 1;
+
+}
+
+.main-nav li.active a {
+	border: 1px solid white;
+
+}
+
+.main-nav li a:hover {
+	
+	background-color: #547180;
+}
+
+body{
+	font-family: monospace;
+	background-image: url(screen.png);
+}
+
+.row {
+	max-width: 1200px;
+	margin: auto;
+
+}
+
+ul {
+	
+	padding:40px;
+	margin-left: 100px;
+	margin-right: 100px;
+}
