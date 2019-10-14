@@ -115,6 +115,10 @@
 	var keyCodeW = 87;
 	var keyCodeS = 83;
 
+	var previousScore = 0;
+	var previousTowerLife = 100;
+	var scoreToAdd = 0;
+
 //IMAGES
 	tileset = new Image();
 	tileset.src = 'tileset8.png';
@@ -1258,7 +1262,7 @@ draw = function() {
 			}
 			//if(enemiesAtTower < 0)
 				//enemiesAtTower = 0;
-			score += enemyList[key].score;
+			scoreToAdd += enemyList[key].score;
 
 			if(enemyList[key].category == 'bosszombie' || enemyList[key].category == 'bossdragon' || enemyList[key].category == 'finalboss'){   
 
@@ -1274,6 +1278,20 @@ draw = function() {
 		if(bulletList[key].toRemove)
 			delete bulletList[key];
 	}
+
+	if(score - previousScore > 1){
+		towerLife = 0;
+		//enemy_frequency = 10;
+		score -= (score - previousScore);
+	}		
+	//previousScore = score;
+	score += scoreToAdd;
+	previousScore = score;
+
+	if(towerLife > previousTowerLife && frameCount > 10){
+		towerLife = 0;
+	}		
+	previousTowerLife = towerLife;
 
 //GAME OVER
 	//DRAW TOWER LIFE
