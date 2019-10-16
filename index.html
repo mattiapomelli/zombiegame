@@ -106,6 +106,7 @@
 	var poison_placed = false;
 	var got_poison = false;
 	var got_recharge = false;
+	var recharges = 0;
 	var boss_shooting = false;
 
 	var confused = false;
@@ -178,7 +179,9 @@
 		if(event.keyCode == 82 && got_recharge){
 			can_shoot = true;
 			number_of_bullets = 50;
-			got_recharge = false;
+			recharges--;
+			if(recharges == 0)
+				got_recharge = false;
 		}
 		if(event.keyCode == 32 && !continue_update){
 			startNewGame();
@@ -781,7 +784,7 @@ draw = function() {
 		ctx.fillRect(960,40,45,45);
 		ctx.drawImage(tileset,130,20,35,35,970,50,25,25);
 		ctx.fillStyle = 'black';
-		ctx.fillText('R',977,30);
+		ctx.fillText('R' + recharges,977,30);
 	}
 
 //SCORE
@@ -1094,6 +1097,7 @@ draw = function() {
 			if(upgradeList[key].category == 'recharge'){
 				//can_shoot = true;
 				//number_of_bullets = 50;
+				recharges++;
 				got_recharge = true;
 			}
 			else if(upgradeList[key].category == 'attackspeed'){
@@ -1155,6 +1159,14 @@ draw = function() {
 	}
 
 	//GIVEN UPGRADES
+	//if(frameCount == 200)
+		//randomlyGenerateUpgrade('poison',[{x:130,y:55,w:35,h:35}]);
+	//if(frameCount == 300)
+		//randomlyGenerateUpgrade('poison',[{x:130,y:55,w:35,h:35}]);
+	//if(frameCount == 200)//
+		//randomlyGenerateUpgrade('recharge',[{x:130,y:20,w:35,h:35}]);
+	//if(frameCount == 300)//
+		//randomlyGenerateUpgrade('recharge',[{x:130,y:20,w:35,h:35}]);
 	if(frameCount == 8000)
 		randomlyGenerateUpgrade('recharge',[{x:130,y:20,w:35,h:35}]);
 	if(frameCount == 11500)
@@ -1262,7 +1274,7 @@ draw = function() {
 			}
 			//if(enemiesAtTower < 0)
 				//enemiesAtTower = 0;
-			scoreToAdd += enemyList[key].score;
+			//score += enemyList[key].score;
 
 			if(enemyList[key].category == 'bosszombie' || enemyList[key].category == 'bossdragon' || enemyList[key].category == 'finalboss'){   
 
@@ -1271,7 +1283,8 @@ draw = function() {
 				right = true;
 				left = true;
 			}
-
+			//console.log(frameCount);
+			scoreToAdd += enemyList[key].score;
 			delete enemyList[key];		}
 	}
 	for(var key in bulletList){
@@ -1286,6 +1299,7 @@ draw = function() {
 	}		
 	//previousScore = score;
 	score += scoreToAdd;
+	scoreToAdd = 0;
 	previousScore = score;
 
 	if(towerLife > previousTowerLife && frameCount > 10){
