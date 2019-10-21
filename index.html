@@ -1356,8 +1356,6 @@ if(towerLife == 0){
 	ctx.font = '15px Arial';
 
 	ctx.fillText('Press SpaceBar to play again', 600,210);
-	popolateList();
-
 
 	
 }
@@ -1404,22 +1402,6 @@ for(let i = 0;i <= 10; i++){
 }
 console.log(Data);
   })
-}
-
-// function popolateList(){
-// 	console.log(Data);
-// 	for (let i = 0; i < Data.length; i++) {
-// 		document.getElementById('classifica').innerHTML = '<li>'+ Data[i]+'</li>'
-// 	}
-	
-// }
-/*	*/
-
-async function asyncGetData() {
-  console.log('calling');
-  var result = await getData();
-  console.log(result);
-  // expected output: 'resolved'
 }
 
 
