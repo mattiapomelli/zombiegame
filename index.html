@@ -1381,7 +1381,7 @@ var Data = [];
 window.onload = function(){
  return new Promise(resolve => {
     setTimeout(() => {var xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://46.101.147.96:4000/ZombieGame/');
+xhr.open('GET', 'http://46.101.147.96:4000/ZombieGame/');
 xhr.onload = function() {
     if (xhr.status === 200) {
        return resolve(JSON.parse(xhr.responseText));
